@@ -1,0 +1,140 @@
+/* --- Reset Global --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #f4f4f4, #e0e0e0);
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    padding-top: 120px; /* Espacio extra en móvil para el menú en columna */
+}
+
+/* --- Header & Nav (Diseño Inicial: Móvil) --- */
+header {
+    background: #2c3e50;
+    color: white;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column; /* Mobile First: los elementos se apilan verticalmente */
+    gap: 1rem;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+nav h1 {
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem;
+}
+
+/* --- Hero Section Responsive --- */
+.hero {
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('hero-bg.jpg') center/cover;
+    padding: 1rem;
+}
+
+.hero-content h2 {
+    /* Tipografía fluida: se adapta dinámicamente según el tamaño de pantalla */
+    font-size: clamp(1.5rem, 5vw, 3rem); 
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+/* --- Contenedores Comunes --- */
+.skills, .proyectos {
+    padding: 3rem 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.skills h2, .proyectos h2 {
+    margin-bottom: 2rem;
+    color: #2c3e50;
+}
+
+/* --- Contenedor de Tarjetas en Móvil --- */
+.tarjetas-container {
+    display: flex;
+    flex-direction: column; /* Tarjetas apiladas una debajo de otra en móvil */
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* --- Componente Tarjeta Estilizado --- */
+.tarjeta {
+    width: 90%;
+    max-width: 400px; /* Controla que no se deforme en pantallas medianas */
+    padding: 2rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.tarjeta:hover {
+    transform: translateY(-5px);
+}
+
+/* --- Footer --- */
+footer {
+    background: #34495e;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+}
+
+/* ==========================================
+   MEDIA QUERY PARA ESCRITORIO (min-width: 769px)
+   ========================================== */
+@media (min-width: 769px) {
+    body {
+        padding-top: 70px; /* Reduce el margen ya que el menú vuelve a ser horizontal */
+    }
+
+    nav {
+        flex-direction: row; /* El menú vuelve a estar alineado de forma horizontal */
+        justify-content: space-between;
+    }
+
+    .tarjetas-container {
+        flex-direction: row; /* Las tarjetas se alinean una al lado de la otra */
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .tarjeta {
+        width: 250px; /* Ancho fijo óptimo para resoluciones de escritorio */
+    }
+}

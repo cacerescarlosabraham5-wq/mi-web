@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* --- Corrección del Contenedor Padre (Navbar) --- */
+.navbar {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: #2c3e50;
+    color: white;
+}
+
+/* --- Corrección de la Lista de Enlaces --- */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+/* --- Corrección del Contenedor de Tarjetas --- */
+.cards-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 2rem;
+}
+
+/* --- Corrección del Componente Tarjeta --- */
+.card {
+    flex: 1 1 200px; /* grow=1, shrink=1, basis=200px corregido */
+    padding: 2rem;
+    background: #3498db;
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+}
