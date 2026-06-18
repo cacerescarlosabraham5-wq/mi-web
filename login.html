@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Login</title>
+</head>
+<body>
+
+    <h1>Login de Usuario</h1>
+
+    <!-- FORMULARIO -->
+    <form id="login-form">
+
+        <label>Email:</label><br>
+        <input type="email" id="email" required placeholder="example@domain.com">
+        <br><br>
+
+        <label>Password:</label><br>
+        <input type="password" id="password" required placeholder="Tu contraseña">
+        <br><br>
+
+        <button type="submit">Ingresar</button>
+
+    </form>
+
+    <!-- JAVASCRIPT DE VALIDACIÓN -->
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (!email || !password) {
+                alert('Por favor, complete todos los campos.');
+            } else {
+                alert('Formulario enviado con éxito.');
+            }
+        });
+    </script>
+
+</body>
+</html>
