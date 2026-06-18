@@ -1,0 +1,102 @@
+// --- 1. Referencias al DOM ---
+const taskForm = document.querySelector("#taskForm");
+const taskInput = document.querySelector("#taskInput");
+const taskList = document.querySelector("#taskList");
+const emptyMessage = document.querySelector("#emptyMessage");
+
+// Arreglo global para almacenar los objetos de las tareas
+let tareas = [];
+
+// --- 2. Cargar datos iniciales desde LocalStorage al iniciar ---
+document.addEventListener("DOMContentLoaded", () => {
+    const almacenamiento = localStorage.getItem("mis_tareas");
+    if (almacenamiento) {
+        tareas = JSON.parse(almacenamiento);
+        // Re-renderizar tareas guardadas anteriormente
+        tareas.forEach(tarea => renderizarTarea(tarea));
+    }
+    updateEmptyState();
+});
+
+// --- 3. Actualizar visibilidad del mensaje vacío ---
+function updateEmptyState() {
+    emptyMessage.style.display = taskList.children.length === 0 ? "block" : "none";
+}
+
+// --- 4. Guardar datos en el almacenamiento del navegador ---
+function guardarEnLocalStorage() {
+    localStorage.setItem("mis_tareas", JSON.stringify(tareas));
+}
+
+// --- 5. Renderizar una tarea en la interfaz (HTML dinámico) ---
+function renderizarTarea(tareaObjeto) {
+    const li = document.createElement("li");
+    li.classList.add("task-item");
+    li.setAttribute("data-id", tareaObjeto.id);
+    
+    if (tareaObjeto.completada) {
+        li.classList.add("done");
+    }
+
+    const span = document.createElement("span");
+    span.textContent = tareaObjeto.texto;
+
+    // Contenedor de botones
+    const divBotones = document.createElement("div");
+    divBotones.classList.add("task-buttons");
+
+    // Botón Completar
+    const completeBtn = document.createElement("button");
+    completeBtn.textContent = "Completar";
+    completeBtn.classList.add("btn-complete");
+    completeBtn.addEventListener("click", () => {
+        li.classList.toggle("done");
+        // Invertir estado en el arreglo lógico
+        tareaObjeto.completada = !tareaObjeto.completada;
+        guardarEnLocalStorage();
+    });
+
+    // Botón Eliminar
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Eliminar";
+    deleteBtn.classList.add("btn-delete");
+    deleteBtn.addEventListener("click", () => {
+        li.remove();
+        // Filtrar y remover del arreglo lógico
+        tareas = tareas.filter(t => t.id !== tareaObjeto.id);
+        guardarEnLocalStorage();
+        updateEmptyState();
+    });
+
+    // Ensamblar e inyectar el nodo al árbol DOM
+    divBotones.appendChild(completeBtn);
+    divBotones.appendChild(deleteBtn);
+    li.appendChild(span);
+    li.appendChild(divBotones);
+    taskList.appendChild(li);
+}
+
+// --- 6. Evento Submit del Formulario ---
+taskForm.addEventListener("submit", (e) => {
+    e.preventDefault(); // Evita recarga innecesaria de la página
+    
+    const taskText = taskInput.value.trim();
+    if (taskText === "") return;
+
+    // Crear modelo de datos estructurado para la tarea
+    const nuevaTarea = {
+        id: Date.now(), // ID único basado en milisegundos
+        texto: taskText,
+        completada: false
+    };
+
+    // Agregar al arreglo, renderizar y guardar
+    tareas.push(nuevaTarea);
+    renderizarTarea(nuevaTarea);
+    guardarEnLocalStorage();
+    
+    // Limpieza de campo y enfoque
+    taskInput.value = "";
+    taskInput.focus();
+    updateEmptyState();
+});

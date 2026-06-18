@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do List Profesional</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="app">
+        <h1>Mi lista de tareas</h1>
+        
+        <form id="taskForm">
+            <input type="text" id="taskInput" placeholder="Escribe una nueva tarea..." required>
+            <button type="submit">Agregar</button>
+        </form>
+        
+        <p id="emptyMessage">No hay tareas registradas.</p>
+        <ul id="taskList"></ul>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
