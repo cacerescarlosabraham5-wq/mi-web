@@ -1,0 +1,59 @@
+// === ETAPA 2: VARIABLES Y OPERACIONES ===
+let x = 10; // Ejercicio específico [cite: 483]
+console.log("X vale:", x); [cite: 484]
+
+let nombre = "Carlos Antonio Martínez Sánchez"; [cite: 485]
+let edad = 56; [cite: 486]
+let esDeVillarrica = true; [cite: 487]
+
+console.log("Mi nombre:", nombre); [cite: 488]
+console.log("Edad:", edad); [cite: 489]
+console.log("¿Soy de Villarrica?", esDeVillarrica); [cite: 490]
+
+// Operaciones básicas [cite: 491]
+let suma = x + 5; [cite: 492]
+let resta = x - 3; [cite: 493]
+console.log("Suma:", suma); // 15 [cite: 494]
+console.log("Resta:", resta); // 7 [cite: 495]
+
+// Cambiar contenido HTML (Corregido el uso de Template Literals) [cite: 496]
+document.getElementById("titulo").innerHTML = `Hola ${nombre}, tienes ${edad} años`; [cite: 497, 498]
+
+
+// === ETAPA 3: FUNCIONES ===
+
+// 1. Función declaración [cite: 519]
+function mostrarSaludo(nombre) { [cite: 520]
+    console.log("¡Hola " + nombre + "!"); [cite: 527, 528]
+    document.getElementById("titulo").innerHTML = "¡Hola " + nombre + "!"; [cite: 528, 529]
+} [cite: 514]
+
+// Llamar función [cite: 530]
+mostrarSaludo("Carlos"); [cite: 531]
+
+// 2. Función expresión (Corregida sintaxis) [cite: 522]
+const calcularIVA = function(precio) { [cite: 523]
+    return precio * 1.1; [cite: 524]
+};
+
+// 3. Arrow function (Moderna) [cite: 525]
+const restar = (a, b) => a - b; [cite: 525]
+
+// Función con cálculo e instrucciones condicionales switch [cite: 532]
+function calculadoraBasica(operacion, num1, num2) { [cite: 533]
+    switch (operacion) { [cite: 534]
+        case "suma": 
+            return num1 + num2; [cite: 535]
+        case "resta": 
+            return num1 - num2; // Corregido operador [cite: 536]
+        case "multiplicar": 
+            return num1 * num2; [cite: 537]
+        case "dividir": 
+            return num1 / num2; [cite: 538]
+        default: 
+            return "Operación inválida"; [cite: 539]
+    }
+}
+
+// Probar en consola [cite: 540]
+console.log(calculadoraBasica("suma", 10, 5)); // 15 [cite: 540]

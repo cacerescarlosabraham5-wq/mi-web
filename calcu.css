@@ -1,0 +1,37 @@
+/* Contenedor principal de la calculadora */
+.calculadora { [cite: 574]
+    max-width: 400px; [cite: 575]
+    margin: 50px auto; [cite: 576]
+    padding: 2rem; [cite: 577]
+    background: #f4f4f4; [cite: 578]
+    border-radius: 10px; [cite: 579]
+    text-align: center; [cite: 580]
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); [cite: 581]
+}
+
+/* Elementos del formulario (Corregido selector múltiple) */
+.calculadora input, 
+.calculadora select, 
+.calculadora button { 
+    display: block; [cite: 583]
+    width: 80%; [cite: 584]
+    margin: 10px auto; [cite: 585]
+    padding: 10px; [cite: 586]
+    font-size: 18px; [cite: 587]
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilos específicos para el botón */
+.calculadora button { [cite: 588]
+    background: #3498db; [cite: 589]
+    color: white; [cite: 590]
+    border: none; [cite: 591]
+    border-radius: 5px; [cite: 592]
+    cursor: pointer; [cite: 593]
+    transition: background 0.3s;
+}
+
+.calculadora button:hover {
+    background: #2980b9;
+}
