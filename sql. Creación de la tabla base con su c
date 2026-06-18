@@ -1,0 +1,32 @@
+-- 1. Creación de la tabla base con su clave primaria correspondiente
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    correo VARCHAR(100) NOT NULL,
+    edad INT
+);
+
+-- 2. Operación: CREATE (Insertar registros iniciales)
+INSERT INTO usuarios (nombre, correo, edad)
+VALUES
+('Ana', 'ana@mail.com', 22),
+('Luis', 'luis@mail.com', 30),
+('Marta', 'marta@mail.com', 27);
+
+-- 3. Operación: READ (Consulta global - Corregido el '*' faltante)
+SELECT * FROM usuarios;
+
+-- 4. Operación: READ con Filtro (Buscar por ID - Corregida la sintaxis limpia)
+SELECT * FROM usuarios WHERE id = 1;
+
+-- 5. Operación: UPDATE (Actualizar registro - Corregidos símbolos ':' y '$')
+UPDATE usuarios
+SET correo = 'ana.nueva@mail.com'
+WHERE id = 1;
+
+-- 6. Operación: DELETE (Eliminar registro - Corregido símbolo '$')
+DELETE FROM usuarios
+WHERE id = 3;
+
+-- 7. Verificación final del estado de la tabla
+SELECT * FROM usuarios;
